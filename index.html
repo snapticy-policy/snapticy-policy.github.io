@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SnapGuide · Developer Page</title>
+  <meta name="description" content="SnapGuide developer homepage: privacy policy, support, app-ads.txt." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#111a33;
+      --text:#e9eefc;
+      --muted:rgba(233,238,252,.75);
+      --line:rgba(233,238,252,.12);
+      --accent:#4f8cff;
+      --accent2:#7c5cff;
+      --ok:#38d39f;
+      --shadow:0 16px 60px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:980px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(79,140,255,.22), transparent 55%),
+        radial-gradient(900px 600px at 90% 10%, rgba(124,92,255,.18), transparent 55%),
+        radial-gradient(800px 500px at 50% 90%, rgba(56,211,159,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 56px}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:18px 18px; border:1px solid var(--line); border-radius:var(--radius);
+      background:rgba(17,26,51,.55); backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width:0}
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display:grid; place-items:center; font-weight:800;
+      letter-spacing:-.5px;
+      box-shadow: 0 12px 34px rgba(79,140,255,.22);
+      flex:0 0 auto;
+    }
+    .brand h1{margin:0; font-size:18px; line-height:1.2}
+    .brand p{margin:3px 0 0; font-size:12px; color:var(--muted)}
+    .toplinks{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(233,238,252,.06);
+      text-decoration:none; font-size:13px; color:var(--text);
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(233,238,252,.10); border-color:rgba(233,238,252,.18)}
+    .btn.primary{
+      border-color:rgba(79,140,255,.40);
+      background: linear-gradient(135deg, rgba(79,140,255,.22), rgba(124,92,255,.18));
+    }
+    .hero{
+      margin-top:18px;
+      padding:26px 18px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:rgba(17,26,51,.42);
+      box-shadow: var(--shadow);
+    }
+    .hero h2{margin:0 0 8px; font-size:26px; letter-spacing:-.4px}
+    .hero p{margin:0; color:var(--muted); max-width:70ch}
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
+    }
+    .card{
+      grid-column: span 6;
+      padding:18px;
+      border-radius:var(--radius);
+      border:1px solid var(--line);
+      background:rgba(17,26,51,.40);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+      min-height:120px;
+    }
+    .card h3{margin:0 0 6px; font-size:15px}
+    .card p{margin:0; color:var(--muted); font-size:13px}
+    .list{margin:10px 0 0; padding:0; list-style:none}
+    .list li{padding:8px 0; border-top:1px solid rgba(233,238,252,.10); font-size:13px; color:var(--muted)}
+    .list li:first-child{border-top:0; padding-top:0}
+    code, .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+    .pill{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(233,238,252,.12);
+      background:rgba(233,238,252,.06);
+      font-size:12px; color:var(--muted);
+    }
+    .okdot{width:8px; height:8px; border-radius:50%; background:var(--ok); display:inline-block}
+    footer{
+      margin-top:16px;
+      padding:16px 2px 0;
+      color:rgba(233,238,252,.55);
+      font-size:12px;
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    }
+
+    @media (max-width: 900px){
+      .card{grid-column: span 12;}
+      .hero h2{font-size:22px}
+      header{flex-direction:column; align-items:flex-start}
+      .toplinks{justify-content:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">SG</div>
+        <div style="min-width:0">
+          <h1>SnapGuide · Developer Page</h1>
+          <p>AI Manual Guide · Support & Policy</p>
+        </div>
+      </div>
+
+      <nav class="toplinks" aria-label="Top links">
+        <!-- 너의 실제 페이지 경로에 맞춰 링크만 바꿔도 됨 -->
+        <a class="btn primary" href="./index.html">홈</a>
+        <a class="btn" href="./index.html#privacy">개인정보처리방침</a>
+        <a class="btn" href="./index.html#support">지원/문의</a>
+        <a class="btn" href="./app-ads.txt">app-ads.txt</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="pill"><span class="okdot"></span> Service status: Online</div>
+      <h2 style="margin-top:10px">설명서 대신 AI 가이드</h2>
+      <p>
+        SnapGuide는 제품 설명서를 촬영하거나 앨범에서 선택하면
+        AI가 단계별 사용법을 정리해주는 앱입니다.
+        이 페이지는 스토어 등록을 위한 개발자 홈페이지/정책 안내 용도입니다.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Main content">
+      <div class="card" id="privacy">
+        <h3>개인정보처리방침 (Privacy Policy)</h3>
+        <p>앱 사용 중 수집/이용되는 정보 및 처리 방침을 확인할 수 있습니다.</p>
+        <ul class="list">
+          <li>
+            정책 페이지:
+            <a href="./index.html" class="mono">https://snapticy-policy.github.io/snapticy-policy/</a>
+          </li>
+          <li>
+            업데이트일: <span class="mono">2026-01-14</span> (예시)
+          </li>
+        </ul>
+      </div>
+
+      <div class="card" id="support">
+        <h3>지원/문의 (Support)</h3>
+        <p>문제 신고/문의는 아래로 연락 주세요.</p>
+        <ul class="list">
+          <li>이메일: <a href="mailto:snapticy@gmail.com" class="mono">snapticy@gmail.com</a></li>
+          <li>앱 이름: <span class="mono">SnapGuide</span></li>
+          <li>패키지: <span class="mono">com.snapticy.snapguide</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>광고 / app-ads.txt</h3>
+        <p>
+          AdMob 검증을 위해 <span class="mono">app-ads.txt</span>를 제공합니다.
+          파일은 아래 경로에서 확인 가능합니다.
+        </p>
+        <ul class="list">
+          <li>
+            app-ads.txt:
+            <a href="./app-ads.txt" class="mono">https://snapticy-policy.github.io/snapticy-policy/app-ads.txt</a>
+          </li>
+          <li class="mono">google.com, pub-9277921878766864, DIRECT, f08c47fec0942fa0</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>About SnapGuide</h3>
+        <p>
+          <b>AI Manual Guide</b><br/>
+          Turn manual photos into step-by-step instructions.
+        </p>
+        <ul class="list">
+          <li>핵심 기능: 촬영/앨범 선택 → 분석 → 단계별 가이드 생성</li>
+          <li>기록: 최근 분석한 가이드를 자동 저장 (로컬)</li>
+          <li>광고: 배너/전면(분석 시) 노출 (설정에 따라 변경 가능)</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> SnapGuide · Snapticy</div>
+      <div>
+        <span class="mono">Last updated</span>:
+        <span class="mono" id="d"></span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // 자동 연도/날짜 표시 (원하면 지워도 됨)
+    const now = new Date();
+    document.getElementById("y").textContent = String(now.getFullYear());
+    document.getElementById("d").textContent = now.toISOString().slice(0, 10);
+  </script>
+</body>
+</html>
